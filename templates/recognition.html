@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhận diện khuôn mặt</title>
+    <link href="http://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+        <div class="header">
+            <h3 class="text-muted">Upload Image</h3>
+        </div>
+
+        <div class="jumbotron" action="/view">
+            <form method=post enctype=multipart/form-data>
+                <p class="lead">
+                    <input type="file" name="file"/>
+                    <br><br>
+                    <input type="submit" value="Recognition"/>
+                </p>
+            </form>
+        </div>
+
+        {% if image_upload %}
+         <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Input Image</h4>
+                <img src="{{url_for('static', filename=image_upload)}}" style=“width:400px;height:600px; align="middle" />
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Result Image</h4>
+                <img src="{{url_for('static', filename='result_image.jpg')}}" style=“width:400px;height:600px; align="middle" />
+            </div>
+        </div>
+        {% else %}
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Input</h4>
+                <img src="{{url_for('static', filename='default_image.jpg')}}" style=“width:400px;height:600px; align="middle" />
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Result</h4>
+                <img src="{{url_for('static', filename='default_image.jpg')}}" style=“width:400px;height:600px; align="middle" />
+            </div>
+        </div>
+        {% endif %}
+
+
+
+        <footer class="footer">
+            <p>&copy; Company 2015</p>
+        </footer>
+
+    </div>
+</body>
+</html>
